@@ -1,0 +1,38 @@
+{
+  "installation": {
+    "version": "19.8.4",
+    "plugins": { "@nx/eslint": "19.8.4" }
+  },
+  "$schema": "./node_modules/nx/schemas/nx-schema.json",
+  "targetDefaults": {
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": ["{projectRoot}/dist"],
+      "cache": true
+    },
+    "lint": { "cache": true },
+    "test": { "cache": true },
+    "test:watch": { "cache": true },
+    "test:cov": { "cache": true },
+    "test:debug": { "cache": true },
+    "test:e2e": { "cache": true }
+  },
+  "defaultBase": "main",
+  "plugins": [
+    { "plugin": "@nx/eslint/plugin", "options": { "targetName": "lint" } },
+    {
+      "plugin": "@nx/jest/plugin",
+      "options": { "targetName": "test" },
+      "exclude": ["apps/api-e2e/**/*", "apps/api-e2e/**/*"]
+    },
+    {
+      "plugin": "@nx/next/plugin",
+      "options": {
+        "startTargetName": "next:start",
+        "buildTargetName": "next:build",
+        "devTargetName": "next:dev",
+        "serveStaticTargetName": "serve-static"
+      }
+    }
+  ]
+}

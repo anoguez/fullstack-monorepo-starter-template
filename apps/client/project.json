@@ -1,0 +1,26 @@
+{
+  "targets": {
+  "build": {
+    "executor": "@nrwl/next:build",
+    "outputs": ["{options.outputPath}"],
+    "options": {
+      "outputPath": "dist/apps/client", 
+      "root": "apps/client"
+    }
+  },
+    "serve": {
+      "executor": "@nrwl/next:serve",
+      "options": {
+        "buildTarget": "client:build"
+      }
+    },
+    "dev": {
+      "executor": "nx:run-commands",
+      "options": {
+        "dependsOn": ["build"],
+        "command": "npm run dev",
+        "cwd": "apps/client"
+      }
+    }
+  }
+}

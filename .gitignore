@@ -1,0 +1,15 @@
+.data/
+.env
+.aider*
+
+.nx/installation
+.nx/cache
+.nx/workspace-data
+
+node_modules
+
+# Next.js
+.next
+out
+#
+dist
